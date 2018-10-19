@@ -15,6 +15,8 @@ def parse_replay_file(file_name, player_name):
         data = json.loads(zstd.loads(f.read()))
 
     print("Load Basic Information")
+    for p in data['players']:
+        print(p['name'] + " " + player_name)
     player = [p for p in data['players'] if p['name'].split(" ")[0] == player_name][0]
     player_id = int(player['player_id'])
     my_shipyard = hlt.Shipyard(player_id, ARBITRARY_ID,
